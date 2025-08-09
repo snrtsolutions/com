@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SNRT Solutions Pvt Ltd</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #003366; /* Deep Blue */
+            --secondary-color: #d92027; /* Red */
+            --accent-color: #ffda2c; /* Yellow */
+            --green-color: #008000; /* Green */
+            --violet-blue: #5F00A6; /* Violet Blue */
+            --text-color: #444;
+            --light-bg: #e6f2ff; /* Light Blue */
+            --dark-bg: #ffffff; /* White */
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.8;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: var(--accent-color);
+            color: #ffffff;
+            padding: 60px 0;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15;
+            z-index: -1;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 3.5em;
+            font-weight: bold;
+            color: var(--violet-blue);
+        }
+        .header h1 .snrt-blue,
+        .header h1 .solutions-yellow,
+        .header h1 .ltd-green {
+            color: inherit;
+        }
+        
+        .header p {
+            margin: 20px 0;
+            font-size: 1.3em;
+            font-weight: 300;
+            color: var(--green-color);
+            font-style: italic;
+        }
+        
+        .nav {
+            background: #ffffff;
+            padding: 15px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav .container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+        .nav a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: 600;
+            transition: color 0.3s ease, border-bottom 0.3s ease;
+            border-bottom: 2px solid transparent;
+        }
+        .nav a:hover {
+            color: var(--secondary-color);
+            border-bottom: 2px solid var(--secondary-color);
+        }
+        
+        .content {
+            background: #ffffff;
+            padding: 40px 0;
+        }
+        
+        .section {
+            margin-bottom: 60px;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+            background-color: var(--dark-bg);
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.5em;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 40px;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            border-radius: 2px;
+        }
+
+        .trainer-profile ul,
+        .why-snrt ul {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+        .trainer-profile li,
+        .why-snrt li {
+            background: var(--light-bg);
+            padding: 30px;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .trainer-profile li:hover,
+        .why-snrt li:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .trainer-profile h3,
+        .why-snrt h3 {
+            margin: 0;
+            font-size: 1.2em;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .course-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .course-list li {
+            background: var(--light-bg);
+            border-left: 5px solid var(--secondary-color);
+            padding: 20px;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 500;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .course-list .syllabus-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 2px solid transparent;
+            transition: color 0.3s ease, border-bottom 0.3s ease;
+        }
+        .course-list .syllabus-link:hover {
+            color: var(--secondary-color);
+            border-bottom: 2px solid var(--secondary-color);
+        }
+
+        .demo-cta {
+            background-color: var(--secondary-color);
+            color: #ffffff;
+            text-align: center;
+            padding: 50px;
+            border-radius: 12px;
+            margin-top: 30px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+        }
+        .demo-cta h3 {
+            margin: 0 0 10px;
+            font-size: 2.8em;
+            font-weight: 700;
+        }
+        .demo-cta p {
+            margin: 0;
+            font-size: 1.5em;
+            font-weight: 300;
+        }
+        
+        .footer {
+            background: var(--primary-color);
+            color: #ffffff;
+            padding: 40px 0;
+            text-align: center;
+        }
+        .footer h3 {
+            font-size: 1.8em;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .footer p {
+            margin: 5px 0;
+            font-size: 1em;
+        }
+        .footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Chatbot Styles */
+        .chatbot-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: var(--secondary-color);
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5em;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+        .chatbot-button:hover {
+            transform: scale(1.1);
+        }
+
+        .chatbot-modal {
+            display: none;
+            position: fixed;
+            z-index: 200;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .chatbot-modal-content {
+            background-color: #fefefe;
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            animation-name: animatetop;
+            animation-duration: 0.4s;
+        }
+
+        @keyframes animatetop {
+            from {top: -300px; opacity: 0}
+            to {top: 0; opacity: 1}
+        }
+
+        .close-button {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close-button:hover,
+        .close-button:focus {
+            color: var(--secondary-color);
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        .chatbot-form label {
+            display: block;
+            margin-top: 15px;
+            font-weight: 600;
+        }
+        .chatbot-form input[type="text"],
+        .chatbot-form input[type="email"],
+        .chatbot-form input[type="tel"],
+        .chatbot-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .chatbot-form textarea {
+            resize: vertical;
+        }
+
+        .chatbot-form button {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+        .chatbot-form button:hover {
+            background-color: var(--secondary-color);
+        }
+        
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="container">
+            <h1><span class="snrt-blue">SNRT</span> <span class="solutions-yellow">Solutions Pvt</span> <span class="ltd-green">Ltd</span></h1>
+            <p>Learn From Real-Time Experts | build a strong foundation for your future!</p>
+        </div>
+    </div>
+
+    <div class="nav">
+        <div class="container">
+            <a href="#trainer">Trainer Profile</a>
+            <a href="#courses">Courses</a>
+            <a href="#why-snrt">Why Choose SNRT?</a>
+            <a href="#contact">Contact Us</a>
+        </div>
+    </div>
+
+    <div class="container content">
+        <section id="trainer" class="section trainer-profile">
+            <h2 class="section-title">Trainer Profile</h2>
+            <ul>
+                <li>
+                    <h3>15+ Years of Total IT Experience</h3>
+                </li>
+                <li>
+                    <h3>9 Years Industry Experience in Singapore</h3>
+                </li>
+                <li>
+                    <h3>Worked with Top MNCs on Real-Time Projects</h3>
+                </li>
+            </ul>
+        </section>
+
+        <section id="courses" class="section">
+            <h2 class="section-title">Online/Offline Courses</h2>
+            <ul class="course-list">
+                <li>Java Fullstack <a href="#" onclick="openModal(); return false;" class="syllabus-link">Syllabus</a></li>
+                <li>Python Fullstack <a href="#" onclick="openModal(); return false;" class="syllabus-link">Syllabus</a></li>
+                <li>DevOps <a href="#" onclick="openModal(); return false;" class="syllabus-link">Syllabus</a></li>
+                <li>Artificial Intelligence <a href="#" onclick="openModal(); return false;" class="syllabus-link">Syllabus</a></li>
+                <li>Testing Tools <a href="#" onclick="openModal(); return false;" class="syllabus-link">Syllabus</a></li>
+            </ul>
+        </section>
+
+        <section id="why-snrt" class="section why-snrt">
+            <h2 class="section-title">Why Choose SNRT?</h2>
+            <ul>
+                <li>
+                    <h3>Real-Time Projects</h3>
+                </li>
+                <li>
+                    <h3>Interview Preparation</h3>
+                </li>
+                <li>
+                    <h3>Resume Building Support</h3>
+                </li>
+                <li>
+                    <h3>Flexible Timings - Weekend & Weekday</h3>
+                </li>
+                <li>
+                    <h3>Personalized Doubt-Clearing Sessions and conduct mock interviews weekly</h3>
+                </li>
+            </ul>
+        </section>
+
+        <div class="demo-cta">
+            <h3>DEMO Session</h3>
+            <p>Every month 1st Sunday @9am</p>
+        </div>
+    </div>
+
+    <footer id="contact" class="footer">
+        <div class="container">
+            <h3>Contact Us</h3>
+            <p><strong>CALL US:</strong> +91-8328333275 | +91-8978922752</p>
+            <p><strong>Address:</strong> 12/566, 13th Street, Nethaji Nagar, Perumbakkam, Near Bollineni Hillside, Chennai - 600119</p>
+            <p><strong>Website:</strong> <a href="http://www.snrtsolutions.com">www.snrtsolutions.com</a></p>
+        </div>
+    </footer>
+
+    <div class="chatbot-button" id="chatbot-button">💬</div>
+
+    <div id="chatbot-modal" class="chatbot-modal">
+        <div class="chatbot-modal-content">
+            <span class="close-button" id="close-button">&times;</span>
+            <h2>Contact Our Team</h2>
+            <form id="chatbot-form" class="chatbot-form">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone">
+
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="4"></textarea>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const chatbotButton = document.getElementById('chatbot-button');
+        const chatbotModal = document.getElementById('chatbot-modal');
+        const closeButton = document.getElementById('close-button');
+        const chatbotForm = document.getElementById('chatbot-form');
+
+        function openModal() {
+            chatbotModal.style.display = 'flex';
+            return false;
+        }
+
+        chatbotButton.onclick = openModal;
+        document.querySelectorAll('.syllabus-link').forEach(link => {
+            link.onclick = openModal;
+        });
+
+        closeButton.onclick = function() {
+            chatbotModal.style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target === chatbotModal) {
+                chatbotModal.style.display = 'none';
+            }
+        }
+
+        chatbotForm.onsubmit = function(event) {
+            event.preventDefault();
+            alert('Thank you for your submission! We will get back to you shortly.');
+            chatbotModal.style.display = 'none';
+            chatbotForm.reset();
+        }
+    </script>
+
+</body>
+</html>
